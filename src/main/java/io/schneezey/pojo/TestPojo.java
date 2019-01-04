@@ -69,7 +69,7 @@ public class TestPojo {
 		.append("testPLong: ").append(testPLong).append("\n")
 		.append("testPBoolean: ").append(testPBoolean).append("\n")
 		.append("testPBytes: ").append(testPBytes==null ? "null" : testPBytes).append("\n")
-		.append("testPString: ").append(testPString==null ? "null" : df.format(testPString)).append("\n")
+		.append("testPString: ").append(testPString==null ? "null" : testPString).append("\n")
 
 
 		.append("testNFloat: ").append(testNFloat==null ? "null" : testNFloat ).append("\n")
@@ -78,7 +78,7 @@ public class TestPojo {
 		.append("testNLong: ").append(testNLong==null ? "null" : testNLong).append("\n")
 		.append("testNBoolean: ").append(testNBoolean==null ? "null" : testNBoolean).append("\n")
 		.append("testNBytes: ").append(testNBytes==null ? "null" : testNBytes).append("\n")
-		.append("testNString: ").append(testNString==null ? "null" : df.format(testNString)).append("\n")
+		.append("testNString: ").append(testNString==null ? "null" : testNString).append("\n")
 		
 		.append("testN1Float: ").append(testN1Float==null ? "null" : testN1Float ).append("\n")
 		.append("testN1Double: ").append(testN1Double==null ? "null" : testN1Double).append("\n")
@@ -86,7 +86,7 @@ public class TestPojo {
 		.append("testN1Long: ").append(testN1Long==null ? "null" : testN1Long).append("\n")
 		.append("testN1Boolean: ").append(testN1Boolean==null ? "null" : testN1Boolean).append("\n")
 		.append("testN1Bytes: ").append(testN1Bytes==null ? "null" : testN1Bytes).append("\n")
-		.append("testN1String: ").append(testN1String==null ? "null" : df.format(testN1String)).append("\n")
+		.append("testN1String: ").append(testN1String==null ? "null" : testN1String).append("\n")
 		
 		.append("testDate: ").append(testDate==null ? "null" : df.format(testDate)).append("\n")
 		//.append("testNDate: ").append(testNDate==null ? "null" : df.format(testNDate)).append("\n")
