@@ -19,9 +19,12 @@ import org.apache.avro.util.Utf8;
 public class PojoSerDes<P> {
 	private Schema schema = null;
 	private static Logger logger = Logger.getLogger(PojoSerDes.class);
-
+	private boolean ignoreNulls = false;
 	
 	public PojoSerDes() {
+	}
+	public PojoSerDes(boolean ignoreNulls) {
+		this.ignoreNulls = ignoreNulls;
 	}
 	
 	public P deserializePojo( GenericRecord record, P target ) throws Exception {
@@ -311,26 +314,13 @@ public class PojoSerDes<P> {
 	private void serializeField(org.apache.avro.Schema.Field metaField, Schema metaFieldSchema, Object parent, GenericRecordBuilder parentBuilder) throws Exception {
 		
 		logger.info("Processing Schema.Type." + metaFieldSchema.getType().getName() + " : " + metaField.name() );
-
-		// Get the value object from either the public field, or if not available the public get Method
-		Object value = null;
-		/*
-		 * should not use public fields.  pojo bean methods should be used exclusively.
-		try {
-			// try to get the public field
-			java.lang.reflect.Field objField = parent.getClass().getField(metaField.name());
-			value = objField.get(parent);
-		} catch ( NoSuchFieldException|SecurityException ex) {
-			// no public field available
-			logger.debug( ex.toString() );
-		}
-		*/
 		
 		/*
 		 *  retrieve the get Method
 		 *  Boolean & boolean are special cases.  Worse, @Nullable Booleans will appear in a union structure.  
 		 *  So to make it simple, we just try "get" first, then "is".    
 		 */
+		Object value = null;
 		try {
 			java.lang.reflect.Method objMethod = parent.getClass().getMethod("get" + metaField.name().substring(0, 1).toUpperCase() + metaField.name().substring(1));
 			value = objMethod.invoke(parent);
@@ -345,7 +335,8 @@ public class PojoSerDes<P> {
 				throw isEx;
 			}
 		}
-
+		
+		if (value == null && ignoreNulls) return;
 		
 		// get the custom encoding to be used
 		String customEncoding = metaFieldSchema.getProp("CustomEncoding");

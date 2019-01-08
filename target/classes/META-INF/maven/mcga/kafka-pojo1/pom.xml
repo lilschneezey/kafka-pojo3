@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>mcga</groupId>
-  <artifactId>kafka-pojo3</artifactId>
+  <artifactId>kafka-pojo1</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>kafka-pojo3</name>
+  <name>kafka-pojo1</name>
   <url>http://maven.apache.org</url>
   
 	<parent>

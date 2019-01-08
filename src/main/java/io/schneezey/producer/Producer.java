@@ -42,6 +42,7 @@ public class Producer
     	pojo.setTestPFloat(Random.randomFloat());
     	pojo.setTestPInt(Random.randomInt());
     	pojo.setTestPLong(Random.randomLong());
+    	pojo.setTestPString(Random.randomWord(40));
 
     	pojo.setTestN1Boolean(Random.randomBoolean());
     	pojo.setTestNBytes(Random.randomByte(Random.randomInt(128)));
@@ -117,7 +118,7 @@ public class Producer
 	        
 	        for (int i = 0; i < 3; i++) {
 	        	TestPojo pojo = createTestPojo();
-		        ProducerRecord<String,Object> avroRecord = new ProducerRecord<String,Object> ("test.pojo.custommapper.generic.confluent.avro", pojo.getId().toString(), mapper.serializePojo(pojo));
+		        ProducerRecord<String,Object> avroRecord = new ProducerRecord<String,Object> ("test.pojo.stream.avro", pojo.getId().toString(), mapper.serializePojo(pojo));
 	        	producer.send( avroRecord );
 		        System.out.println("Avro Message produced" + pojo.toString());
 			}
