@@ -5,6 +5,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 import org.apache.avro.reflect.AvroEncode;
+import org.apache.avro.reflect.AvroIgnore;
 import org.apache.avro.reflect.DateAsLongEncoding;
 import org.apache.avro.reflect.Nullable;
 
@@ -17,6 +18,7 @@ public class TestPojo {
 	
 	private Integer id = 0;
 
+	
 	// Primitives
 	private float testPFloat = (float) 0.0;
 	private double testPDouble = 0.0;
@@ -57,7 +59,9 @@ public class TestPojo {
 	
 	@Nullable
 	private ArrayList<TestSubPojo> subPojos = null;
-	
+
+	@AvroIgnore private int testIgnore = 0;
+
 	public String toString() {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		StringBuffer buffer = new StringBuffer();
